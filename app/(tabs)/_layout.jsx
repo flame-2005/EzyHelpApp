@@ -25,6 +25,8 @@ const TabIcon = ({ icon, color, name, focused }) => {
   );
 };
 
+const shouldHideTab = true;
+
 const TabLayout = () => {
   const { loading, isLogged } = useGlobalContext();
 
@@ -61,31 +63,15 @@ const TabLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="bookmark"
+          name="services"
           options={{
-            title: "Bookmark",
+            title: "services",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
                 icon={icons.bookmark}
                 color={color}
-                name="Bookmark"
-                focused={focused}
-              />
-            ),
-          }}
-        />
-
-        <Tabs.Screen
-          name="create"
-          options={{
-            title: "Create",
-            headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                icon={icons.plus}
-                color={color}
-                name="Create"
+                name="Services"
                 focused={focused}
               />
             ),

@@ -47,13 +47,13 @@ const SignUp = () => {
           }}
         >
           <Image
-            source={images.logo}
+            source= {{ uri: 'https://res.cloudinary.com/dtyombve3/image/upload/v1737798927/bghejb2qjdoo7zievrql-removebg-preview_irtayq.png' }}
             resizeMode="contain"
-            className="w-[115px] h-[34px]"
+            className="w-[115px] h-[140px]"
           />
 
-          <Text className="text-2xl font-semibold text-white mt-10 font-psemibold">
-            Sign Up to Aora
+          <Text className="text-2xl font-semibold text-white font-psemibold">
+            Sign Up to EzyHelp
           </Text>
 
           <FormField

@@ -1,16 +1,15 @@
 import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Image, FlatList, TouchableOpacity } from "react-native";
+import { View,Text, Image, FlatList, TouchableOpacity,Linking } from "react-native";
 
 import { icons } from "../../constants";
-import useAppwrite from "../../lib/useAppwrite";
-import { getUserPosts, signOut } from "../../lib/appwrite";
+import { signOut } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
-import { EmptyState, InfoBox, VideoCard } from "../../components";
+import { InfoBox,CustomButton} from "../../components";
+import Footer from "../../components/Footer";
 
 const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
-  const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
 
   const logout = async () => {
     await signOut();
@@ -20,26 +19,26 @@ const Profile = () => {
     router.replace("/sign-in");
   };
 
+  const openURL = () => {
+    const url = 'https://www.ezyhelp.in/role/Role'; // Replace with your external URL
+    Linking.openURL(url).catch((err) =>
+      console.error("Failed to open URL:", err)
+    );
+  };
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
-        data={posts}
         keyExtractor={(item) => item.$id}
-        renderItem={({ item }) => (
-          <VideoCard
-            title={item.title}
-            thumbnail={item.thumbnail}
-            video={item.video}
-            creator={item.creator.username}
-            avatar={item.creator.avatar}
-          />
-        )}
-        ListEmptyComponent={() => (
-          <EmptyState
-            title="No Videos Found"
-            subtitle="No videos found for this profile"
-          />
-        )}
+        // renderItem={({ item }) => (
+        //   <VideoCard
+        //     title={item.title}
+        //     thumbnail={item.thumbnail}
+        //     video={item.video}
+        //     creator={item.creator.username}
+        //     avatar={item.creator.avatar}
+        //   />
+        // )}
         ListHeaderComponent={() => (
           <View className="w-full flex justify-center items-center mt-6 mb-12 px-4">
             <TouchableOpacity
@@ -53,7 +52,7 @@ const Profile = () => {
               />
             </TouchableOpacity>
 
-            <View className="w-16 h-16 border border-secondary rounded-lg flex justify-center items-center">
+            <View className="w-16  h-16 border border-secondary rounded-lg flex justify-center items-center">
               <Image
                 source={{ uri: user?.avatar }}
                 className="w-[90%] h-[90%] rounded-lg"
@@ -64,25 +63,45 @@ const Profile = () => {
             <InfoBox
               title={user?.username}
               containerStyles="mt-5"
-              titleStyles="text-lg"
+              titleStyles="text-3xl"
             />
+            <View>
+        <Text className = 'text-yellow-500 font-bold text-3xl '>Wanna Get Hired ?? </Text>
 
-            <View className="mt-5 flex flex-row">
-              <InfoBox
-                title={posts.length || 0}
-                subtitle="Posts"
-                titleStyles="text-xl"
-                containerStyles="mr-10"
-              />
-              <InfoBox
-                title="1.2k"
-                subtitle="Followers"
-                titleStyles="text-xl"
-              />
-            </View>
+        <TouchableOpacity
+      activeOpacity={0.7}
+      className={`bg-secondary mt-5 mb-5 text-center rounded-xl min-h-[62px] flex flex-row justify-center items-center
+      }`}
+      onPress={openURL}
+
+    >
+
+
+<Text className={`text-primary font-psemibold text-lg`}>
+        Get Hired
+      </Text>
+    </TouchableOpacity>
+        <TouchableOpacity
+      activeOpacity={0.7}
+      className={`bg-secondary mb-5 text-center rounded-xl min-h-[62px] flex flex-row justify-center items-center
+      }`}
+      onPress={() => router.push("/edit/edit")}
+
+    >
+
+
+<Text className={`text-primary font-psemibold text-lg`}>
+        Edit Profile
+      </Text>
+    </TouchableOpacity>
+      </View>
+      
           </View>
+          
         )}
+        
       />
+      <Footer/>
     </SafeAreaView>
   );
 };

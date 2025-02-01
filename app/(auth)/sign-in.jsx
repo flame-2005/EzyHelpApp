@@ -48,13 +48,13 @@ const SignIn = () => {
           }}
         >
           <Image
-            source={images.logo}
+            source= {{ uri: 'https://res.cloudinary.com/dtyombve3/image/upload/v1737798927/bghejb2qjdoo7zievrql-removebg-preview_irtayq.png' }}
             resizeMode="contain"
-            className="w-[115px] h-[34px]"
+            className="w-[115px] h-[150px]"
           />
 
           <Text className="text-2xl font-semibold text-white mt-10 font-psemibold">
-            Log in to Aora
+            Log in to EzyHelp
           </Text>
 
           <FormField

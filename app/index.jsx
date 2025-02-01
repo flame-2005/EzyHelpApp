@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Redirect, router } from "expo-router";
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView,TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "../constants";
@@ -11,6 +11,13 @@ const Welcome = () => {
   const { loading, isLogged } = useGlobalContext();
 
   if (!loading && isLogged) return <Redirect href="/home" />;
+
+    const openURL = () => {
+      const url = 'https://www.ezyhelp.in/role/Role'; // Replace with your external URL
+      Linking.openURL(url).catch((err) =>
+        console.error("Failed to open URL:", err)
+      );
+    };
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -23,22 +30,22 @@ const Welcome = () => {
       >
         <View className="w-full flex justify-center items-center h-full px-4">
           <Image
-            source={images.logo}
-            className="w-[130px] h-[84px]"
+            source= {{ uri: 'https://res.cloudinary.com/dtyombve3/image/upload/v1737798927/bghejb2qjdoo7zievrql-removebg-preview_irtayq.png' }}
+            className="w-[220px] h-[150px]"
             resizeMode="contain"
           />
 
           <Image
-            source={images.cards}
+            source={{uri:'https://res.cloudinary.com/dtyombve3/image/upload/v1718883537/jykgqmd5eotkbfhhnk3d.png'}}
             className="max-w-[380px] w-full h-[298px]"
             resizeMode="contain"
           />
 
           <View className="relative mt-5">
             <Text className="text-3xl text-white font-bold text-center">
-              Discover Endless{"\n"}
-              Possibilities with{" "}
-              <Text className="text-secondary-200">Aora</Text>
+              Get Endless{"\n"}
+              Services with{" "}
+              <Text className="text-secondary-200">EzyHelp</Text>
             </Text>
 
             <Image
@@ -49,9 +56,21 @@ const Welcome = () => {
           </View>
 
           <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">
-            Where Creativity Meets Innovation: Embark on a Journey of Limitless
-            Exploration with Aora
+           Your One and only app for all your blue coller works
           </Text>
+              {/* <TouchableOpacity
+                activeOpacity={0.7}
+                className={`bg-secondary text-center rounded-xl min-h-[62px] flex flex-row justify-center items-center
+                }`}
+                onPress={openURL}
+          
+              >
+          
+          
+          <Text className={`text-primary font-psemibold text-lg`}>
+                  Get Hired
+                </Text>
+              </TouchableOpacity> */}
 
           <CustomButton
             title="Continue with Email"
