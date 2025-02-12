@@ -39,7 +39,7 @@ const Slider = () => {
     try {
       // Create an order on your backend
       const order = await axios.post(
-        "https://e0c2-152-58-237-96.ngrok-free.app/api/razorpay", // Update with your backend URL
+        "http://13.203.194.45:5000/api/razorpay", // Update with your backend URL
         orderData
       );
 
@@ -93,7 +93,7 @@ const Slider = () => {
   const saveAddress = async () => {
     try {
       const response = await axios.post(
-        'https://e0c2-152-58-237-96.ngrok-free.app/api/address', // Update with your backend URL
+        'http://13.203.194.45:5000/api/address', // Update with your backend URL
         formData
       );
       if (response.status === 201) {
@@ -158,7 +158,7 @@ const Slider = () => {
             borderRadius: 8,
           }}
         >
-          <Text style={{ color: 'white', fontSize: 16 }}>Pay ₹{amount / 100}</Text>
+          <Text style={{ color: 'white', fontSize: 16 }}>Pay ₹{amount}</Text>
         </TouchableOpacity>
       </View>
 

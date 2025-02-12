@@ -25,12 +25,13 @@ const TabIcon = ({ icon, color, name, focused }) => {
   );
 };
 
-const shouldHideTab = true;
 
 const TabLayout = () => {
   const { loading, isLogged } = useGlobalContext();
 
   if (!loading && !isLogged) return <Redirect href="/sign-in" />;
+
+  
 
   return (
     <>

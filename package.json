@@ -1,5 +1,5 @@
 {
-  "name": "sora",
+  "name": "EzyHelp",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
@@ -28,6 +28,7 @@
     "nativewind": "^2.0.11",
     "razorpay": "^2.9.5",
     "react": "18.2.0",
+    "react-dom": "^18.2.0",
     "react-native": "0.73.6",
     "react-native-animatable": "^1.4.0",
     "react-native-appwrite": "^0.2.2",
